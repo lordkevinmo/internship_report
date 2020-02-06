@@ -1,0 +1,198 @@
+%!TEX root = ./latex-upmethodology-version.tex
+
+%----------------------------------------
+% Figures configuration
+%----------------------------------------
+
+\input{assets/figures/figures_common}
+
+%----------------------------------------
+% upmethodology commands redefinition
+%----------------------------------------
+
+\makeatletter
+
+% Remove 'Initials' column from validators
+\renewcommand{\upm@document@addvalidator}[3][]{%
+	\global\protected@edef\thevalidatorlist{\thevalidatorlist\protect\Ifnotempty{\thevalidatorlist}{,} \protect\upmmakename{#2}{#3}{~}}
+
+	\global\protected@edef\upm@document@validator@tab@commented{\upm@document@validator@tab@commented \protect\upmmakename{#2}{#3}{~} & 
+	& \protect\Ifnotempty{#1}{\protect\href{mailto:#1}{#1}}\\}
+
+	\ifupm@document@validator@tab@hascomment\else
+		\global\protected@edef\upm@document@validator@tab{\upm@document@validator@tab \protect\upmmakename{#2}{#3}{~} & 
+		\protect\Ifnotempty{#1}{\protect\href{mailto:#1}{#1}}\\}
+	\fi
+}
+\renewcommand{\upm@document@addvalidatorstar}[4][]{%
+	\global\protected@edef\thevalidatorlist{\thevalidatorlist\protect\Ifnotempty{\thevalidatorlist}{,} \protect\upmmakename{#2}{#3}{~}}
+
+	\global\let\upm@document@validator@tab\relax
+
+	\global\protected@edef\upm@document@validator@tab@commented{\upm@document@validator@tab@commented \protect\upmmakename{#2}{#3}{~} & 
+	#4 & \protect\Ifnotempty{#1}{\protect\href{mailto:#1}{#1}}\\}
+
+	\upm@document@validator@tab@hascommenttrue
+}
+\renewcommand{\upmdocumentvalidators}[1][\linewidth]{%
+	\ifupm@document@validator@tab@hascomment%
+		\Ifnotempty{\upm@document@validator@tab@commented}{%
+		\noindent\expandafter\begin{mtabular}[#1]{3}{|X|l|c|}%
+		\tabulartitle{\upm@lang@document@validators}%
+		\tabularheader{\upm@lang@document@names}{\upm@lang@document@comments}{\upm@lang@document@emails}%
+		\upm@document@validator@tab@commented
+		\hline%
+		\expandafter\end{mtabular}\par\vspace{.5cm}}%
+	\else%
+		\Ifnotempty{\upm@document@validator@tab}{%
+		\noindent\expandafter\begin{mtabular}[#1]{2}{|X|c|}%
+		\tabulartitle{\upm@lang@document@validators}%
+		\tabularheader{\upm@lang@document@names}{\upm@lang@document@emails}%
+		\upm@document@validator@tab
+		\hline%
+		\expandafter\end{mtabular}\par\vspace{.5cm}}%
+	\fi%
+}
+
+% Remove history from document info page
+\renewcommand{\upmdocinfopage}{
+	\thispagestyle{plain}
+	\upmdocumentsummary\upmdocumentauthors\upmdocumentvalidators\upmdocumentinformedpeople\clearpage%
+}
+
+% Decrease space after upmcaution upminfo and upmquestion message boxes
+\renewenvironment{upm@highligh@box}[2]{%
+	\par
+	\vspace{.5cm}
+	\begin{tabular}{|p{#1}|}
+	\hline
+	\begin{window}[0,l,{\mbox{\includegraphics[width=1cm]{#2}}},{}]
+}{%
+	\end{window}\\ \hline \end{tabular}
+	%\vspace{.5cm}
+	\par
+}
+
+\makeatother
+
+%----------------------------------------
+% upmethodology informations
+%----------------------------------------
+
+% Document Information and Declaration
+\declaredocument{Rapport de stage ST40 - A2019}{Développement d'applications mobile sous iOS et Android}{-}
+
+% Document Authors
+\addauthor*[koffi.agbenya@utbm.fr]{Koffi Moïse}{Agbenya}{Étudiant en branche INFO}
+
+% Document Validators
+\addvalidator*[oumaya.baala@utbm.fr]{Oumaya Baala}{Canalda}{Suiveur UTBM}
+\addvalidator*[emploi@online.lu]{Paul}{Retter}{Tuteur en entreprise}
+
+% Informed People
+\addinformed*[oumaya.baala@utbm.fr]{Oumaya Baala}{Canalda}{Suiveur UTBM}
+\addinformed*[emploi@online.lu]{Paul}{Retter}{Tuteur en entreprise}
+\addinformed*[celine.beri@silis.lu]{Celine}{Beri}{Responsable administratif (RH)}
+
+% Copyright and Publication Information
+\setcopyrighter{Koffi Moïse Agbenya}
+\setpublisher{l'Universitée de Technologie de Belfort Montbéliard}
+
+% Version
+\incversion{\makedate{\the\day}{\the\month}{\the\year}}{Version initiale.}{\upmpublic}
+
+%----------------------------------------
+% utbmcovers informations
+%----------------------------------------
+
+\UseExtension{utbmcovers}
+
+\setutbmfrontillustration{mobile}
+\setutbmtitle{Développement d'applications mobile sous iOS et Android}
+\setutbmsubtitle{Rapport de stage ST40 - A2019}
+\setutbmstudent{Koffi Moïse Agbenya}
+\setutbmstudentdepartment{Département Informatique}
+\setutbmstudentpathway{}
+\setutbmcompany{LUXEMBOURG ONLINE S.A.}
+\setutbmcompanyaddress{14 Avenue du X Septembre\\ L-2550 Luxembourg}
+\setutbmcompanywebsite{\href{www.internet.lu}{www.internet.lu}}
+\setutbmcompanytutor{RETTER Paul}
+\setutbmschooltutor{Oumaya Baala Canalda}
+\setutbmkeywords{Télécommunications - Informatique - Développements logiciels - Architecture logicielle - Logiciel réseau - Logiciel grand public}
+\setutbmabstract{
+	De nos jours, de plus en plus d'entreprises proposent des solutions innovantes afin de résoudre de nombreux problèmes rencontrés par des prospects ou pour fidéliser leurs clients. Face à la montée croissante d'utilisateurs de téléphone mobile, ces solutions ciblent en plus grande partie les téléphones mobiles. Derrière la simplicité d'utilisation d'une application mobile se cache beaucoup de processus qui peuvent devenir très rapidement complexe. Au cours de mon stage, la tâche qui m'a été confiée est de développer des applications pour téléphone mobile fonctionnant sous les systèmes d'exploitations Android et iOS. Les applications que j'ai développé deux (2) au total, ont respectivement pour objectif  de : faire le diagnostique à distance d'un modem-routeur ; et de réserver, commander dans ses restaurants préférés ou se les faire livrer. Ce document découlant de mon stage en tant que développeur d'application mobile au sein de Luxembourg Online SA, exhibe la totalité des activités menées et précisément sur le sujet \og Développement d'application sous android et iOS \fg{} dans le cadre de ma formation à l'Université de Technologie de Belfort Montbéliard (UTBM).
+	
+}
+
+%----------------------------------------
+% Listings
+%----------------------------------------
+
+\input{GenDbgCDefinition}
+\input{YaCoCDefinition}
+
+%----------------------------------------
+% Other configurations
+%----------------------------------------
+
+% Figures folder
+\graphicspath{{assets/figures/}}
+
+% Figures counting
+\counterwithout{figure}{chapter}
+
+% Table counting
+\counterwithout{table}{chapter}
+
+% Source code formatting
+\upmcodelang{cpp}
+
+% Prevent page breaks in paragraphs
+\predisplaypenalty=1000
+\postdisplaypenalty=1000
+\clubpenalty=1000
+
+% Minimal space required in the bottom margin not to move the title on the next page
+%\renewcommand{\bottomtitlespace}{.1\textheight}
+
+% Links config, especialy for the table of contents
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    linktoc=all
+}
+
+% French language config
+\frenchbsetup{StandardLayout=true,ReduceListSpacing=false,CompactItemize=false}
+
+% Vertical alignement config
+\raggedbottom{}
+
+\setglossarystyle{list}
+
+%----------------------------------------
+% Functions definitions
+%----------------------------------------
+
+% Clear to the next left page
+\newcommand*{\cleartoleftpage}{
+  \clearpage \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+% Paragraph with line break
+\newcommand{\p}[1]{\paragraph{#1\\}}
+
+% Function to print a warning sign
+\newcommand{\dangersign}[1][2.5ex]
+	{\renewcommand{\stacktype}{L}
+		{\scaleto{\stackon[1pt]{\color{red}$\triangle$}{\fontsize{4pt}{4pt}\selectfont !}}{#1}}}
+
+% Definition of \Witem for 'itemize' environment with a warning sign
+\newcommand{\Witem}
+{\item[\dangersign{}]}
+
+\newcommand{\annexe}[1]{Annexe \ref{sec:#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\folder}[1]{\texttt{#1}}
+\newcommand{\reg}[1]{\texttt{\$#1}}

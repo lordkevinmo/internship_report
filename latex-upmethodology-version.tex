@@ -1,89 +1,14 @@
 %!TEX program = xelatex
 % not lualatex because of a pgf bug: https://sourceforge.net/p/pgf/bugs/384/
-\documentclass[report, backcover, french]{upmethodology-document}
-\usepackage[T1]{fontenc}
-\usepackage{hyperref}
+\PassOptionsToPackage{table,svgnames}{xcolor}
+\documentclass[11pt, book, backcover, french]{upmethodology-document}
+\input{packages}
+\input{settings}
 
-%----------------------------------------
-% hyperref configuration
-%----------------------------------------
-
-\hypersetup{
-    colorlinks=true,
-    urlcolor=,
-}
-
-%----------------------------------------
-% upmethodology configuration
-%----------------------------------------
-
-%%% Document Information and Declaration
-\declaredocument{Développement d'applications mobile sous iOS et Android}{Rapport de stage ST40 - A2019}{--}
-
-%%% Document Author
-\addauthor[koffi.agbenya@utbm.fr]{Koffi Moïse}{Agbenya}
-
-%%% Document Validators
-\addvalidator*[oumaya.baala@utbm.fr]{Oumaya Baala}{Canalda}{Tuteur UTBM}
-\addvalidator*[emploi@online.lu]{Paul}{Retter}{Tuteur entreprise}
-
-%%% Informed People
-\addinformed*[oumaya.baala@utbm.fr]{Oumaya Baala}{Canalda}{Tuteur UTBM}
-\addinformed*[emploi@online.lu]{Paul}{Retter}{Tuteur entreprise}
-
-%%% Copyright and Publication Information
-\setcopyrighter{Koffi Moïse Agbenya}
-\setpublisher{l'Universitée de Technologie de Belfort Montbéliard}
-
-%%% Version
-\incversion{\makedate{\the\day}{\the\month}{\the\year}}{Initial version.}{\upmpublic}
-
-%%% Use utbmcovers extention
-\UseExtension{utbmcovers} % /!\ Put this before utbmcovers configuration functions or put \usepackage{utbmcovers}
-
-%----------------------------------------
-% utbmcovers configuration
-%----------------------------------------
-
-\setutbmfrontillustration{utbm_default_illustration}
-\setutbmtitle{Développement d'applications mobile \\ sous iOS et Android}
-\setutbmsubtitle{Rapport de stage ST40 - A2019}
-\setutbmstudent{AGBENYA Koffi Moïse}
-\setutbmstudentdepartment{Département Informatique}
-\setutbmstudentpathway{}
-\setutbmcompany{LUXEMBOURG ONLINE S.A.}
-\setutbmcompanyaddress{14 Avenue du X Septembre\\ L-2550 Luxembourg}
-\setutbmcompanywebsite{\href{www.internet.lu}{www.internet.lu}}
-\setutbmcompanytutor{RETTER Paul}
-\setutbmschooltutor{Oumaya Baala Canalda}
-\setutbmkeywords{Télécommunications - Informatique - Développements logiciels - Architecture logicielle - Logiciel réseau - Logiciel grand public}
-\setutbmabstract{
-	De nos jours, de plus en plus d'entreprises proposent des solutions innovantes afin de résoudre de nombreux problèmes rencontrés par des prospects ou pour fidéliser leurs clients. Face à la montée croissante d'utilisateurs de téléphone mobile, ces solutions ciblent en plus grande partie les téléphones mobiles. Derrière la simplicité d'utilisation d'une application mobile se cache beaucoup de processus qui peuvent devenir très rapidement complexe. Au cours de mon stage, la tâche qui m'a été confiée est de développer des applications pour téléphone mobile fonctionnant sous les systèmes d'exploitations Android et iOS. Les applications que j'ai développé deux (2) au total, ont respectivement pour objectif  de : faire le diagnostique à distance d'un modem-routeur ; et de réserver, commander dans ses restaurants préférés ou se les faire livrer. Ce document découlant de mon stage en tant que développeur d'application mobile au sein de Luxembourg Online SA, exhibe la totalité des activités menées et précisément sur le sujet \og Développement d'application sous android et iOS \fg{} dans le cadre de ma formation à l'Université de Technologie de Belfort Montbéliard (UTBM).
-	
-}
-
-%----------------------------------------
-% document
-%Généralement pour les sociétés de télécommunication qui offrent des services internet, il est difficile de diagnostiquer les problèmes réels liés au appareils du client lorsqu'il n'a pas accès à internet, et il faudrait que les techniciens se déplacent sur le lieu de la panne pour pouvoir faire le diagnostique et dépanner le client. Dans le soucis de simplifier le travail du service technique de l'entreprise et réduire les coups, une application pour le centre d'assistance de l'entreprise est pensée pour résoudre ce problème. L'objectif principal de l'application est de permettre de dépanner à distance le routeur ou modem internet afin d'éviter le déplacement du service technique et de situer rapidement le client.
-%----------------------------------------
+\makeglossaries
+\input{glossary}
 
 \begin{document}
-\chapter*{Introduction}
-Selon une étude de Statista sur l'utilisation du téléphone mobile dans le monde, le nombre d'utilisateur de téléphone mobile dans le monde devrait dépasser la barre des cinq milliards en 2019 et d'ici 2020, le nombre d'utilisateurs de smartphone devrait atteindre 2,87 milliards d'individus. Selon une autre étude réalisée par \og Internetworldstats \fg{,}  au 30 juin 2019, le nombre d'utilisateurs d'internet dans le monde a atteint les $4.536.248.808$ soit $58 \% $ de la population mondiale dont environ 3,986 milliards\footnote{Etude réalisée par Hootsuite} sont des connexions réalisées à partir des téléphones mobiles.
-
-De ces études on peut en déduire clairement qu'il est primordial pour une entreprise aujourd'hui de proposer ses services internet pour les appareils mobiles  qui  représentent $88\% $ de l'accès à internet. 
-
-De nos jours, le développement pour mobile a pris beaucoup d'ampleur  et de plus en plus d'entreprises l'ont adopté pour leurs produits car c'est un moyen de créer des services innovants, d'améliorer la communication et d'augmenter leur productivité.
-
-Du 02 septembre 2019 au 07 février 2020 (5 mois 5 jours), j'ai effectué un stage assistant ingénieur au sein de l'entreprise \textbf{Luxembourg Online S.A} (située à Luxembourg). Au cours de ce stage dans le département informatique, j'ai pu mettre mes compétences de développeurs logiciels pour développer plusieurs applications mobiles pour les systèmes d'exploitations Android et iOS.
-
-Luxembourg Online est l'un des principaux opérateurs luxembourgeois de télécommunications. La société est spécialisée dans la fourniture d'accès internet, la téléphonie fixe, mobile, la télévision, le développement de réseaux et d'applications informatiques.
-
-Le service de l'entreprise qui m'a accueillit pour mon stage est le service informatique qui est dirigé par mon maître de stage M. Paul Retter. Mon stage a consisté essentiellement en le développement de plusieurs applications mobiles pour les platformes Android et iOS.
-
-Plus largement, ce stage a été l'opportunité pour moi non seulement d'approfondir mes connaissances dans le développement pour Android et de travailler sur une application grand public mais aussi d'apprendre à développer des applications pour la platforme iOS d'apple et d'approfondir mes connaissances dans le domaine.
-
-Au delà d'enrichir mes connaissances en développement logiciel, ce stage m'a permis de comprendre certains aspect du développement notamment la progrmmation réactive et de le mettre en pratique.
-
-Dans l'optique de rendre compte de manière fidèle des 5 mois passés au sein de la société  Luxembourg Online, il apparaît logique de présenter à titre préalable de l'état actuel des solutions internet et mobile de l'entreprise, ensuite envisager le cadre du stage : la culture d'entreprise dans la société Luxembourg Online et son apport dans la méthode de travail et la productivité et enfin préciser les différentes missions et tâches que j'ai pu efectuer au sein du service informatique, et les nombreux apports que j'ai pu en tirer.
+	\input{remerciements}
+	\input{introduction}
 \end{document}

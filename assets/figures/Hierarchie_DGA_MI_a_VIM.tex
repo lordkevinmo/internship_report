@@ -1,0 +1,98 @@
+%!TEX program = xelatex
+\documentclass[11pt,class=book]{standalone}
+\input{figures_packages}
+\input{figures_common}
+
+\begin{document}
+	%---------------------------------
+	% Tree
+	\pgfmathsetmacro\tblockheight{50}%
+	\pgfmathsetmacro\tblockwidth{110}%
+	\pgfmathsetmacro\tblocksep{30}%
+
+	\pgfmathsetmacro\tlevelaxshift{-250}%
+	\pgfmathsetmacro\tlevelbxshift{-140}%
+
+	\pgfmathsetmacro\tlevelprelinelength{30}%
+	\pgfmathsetmacro\tlevellinelength{30}%
+
+	%---------------------------------
+	% Colors
+	\colorlet{mainblockcolor}{blue!55}%
+	\colorlet{tblockcolor}{blue!35}%
+	\colorlet{tblockselectedcolor}{green!45}%
+
+	\begin{tikzpicture}[x=1pt,y=1pt]
+		\tikzset{firsttblock/.style={
+			rectangle,
+			minimum height=\tblockheight,
+			minimum width=\tblockwidth,
+			fill=tblockcolor,
+			text width=\tblockwidth-5,
+			anchor=north west,
+			text centered,
+		}}
+		\tikzset{tblock/.style={
+			firsttblock,
+			xshift=\tblocksep,
+		}}
+
+		%---------------------------------
+		% DGA MI
+		\node[
+			firsttblock,
+			fill=mainblockcolor
+		] (dgami) at (0,0) {\bfseries DGA Maitrise de l'Information (MI)};
+
+		%---------------------------------
+		% DGA MI tree
+		\coordinate (A) at ($(dgami.south)-(0,\tlevelprelinelength)$);
+		\draw (dgami.south) -- (A);
+
+		%---------------------------------
+		% Composants électroniques et optroniques
+		\node[
+			firsttblock,
+			yshift=-\tlevellinelength,
+			xshift=\tlevelaxshift,
+		] (ceo) at (A) {Composants électroniques et optroniques};
+		\draw (A) -| (ceo.north);
+
+		%---------------------------------
+		% SSI
+		\node[
+			tblock,
+		] (ssi) at (ceo.north east) {\bfseries Sécurité des systèmes d'information (SSI)};
+		\draw (A) -| (ssi.north);
+
+		%---------------------------------
+		% Réseaux de télécommunications
+		\node[
+			tblock,
+		] (rdt) at (ssi.north east) {Réseaux de télécommunications};
+		\draw (A) -| (rdt.north);
+
+		%---------------------------------
+		% ...
+		\node[
+			tblock,
+		] (ect) at (rdt.north east) {\huge\ldots};
+		\draw (A) -| (ect.north);
+
+		%---------------------------------
+		% SSI5 tree
+		\coordinate (A) at ($(ssi.south)-(0,\tlevelprelinelength)$);
+		\draw (ssi.south) -- (A);
+
+		%---------------------------------
+		% VIM/VSE
+		\node[
+			firsttblock,
+			anchor=north,
+			minimum width=2*\tblockwidth,
+			text width=(2*\tblockwidth)-5,
+			fill=tblockselectedcolor,
+		] (vimvse) at (A) {\bfseries Rétro-ingénierie et analyse de malwares et produits logiciels (VIM/VSE)};
+		\draw (A) -| (vimvse.north);
+	\end{tikzpicture}
+\end{document}
