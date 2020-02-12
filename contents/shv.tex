@@ -29,12 +29,12 @@ Dans cette section je présente le diagramme de contexte du système afin de loc
 Du point de vue du fonctionnement du système, les acteurs \emph{Modem} et \emph{Serveur} sont certes secondaires mais indispensable. C'est la connexion internet du modem qui est diagnostiquée. Le serveur a pour rôle de servir d'interface pour le \hd et de serveur pour l'application du point de vue de l'architecture client-serveur pour une application. Le système sert donc d'intermédiaire ou de moyen de communication entre le \emph{modem} et le \emph{serveur}.
 
 \section{Caractéristique de l'utilisateur}
-L'application est destinée à l'utilisation des clients de la société \lol ayant souscris à une offre internet via box ou ADSL. L'utilisation de l'application ne requiert aucune compétence particulière à part le fait de savoir utiliser un smartphone.
+L'application est destinée à l'utilisation des clients de la société \lol ayant souscris à une offre internet via box ou \gls{ADSL}. L'utilisation de l'application ne requiert aucune compétence particulière à part le fait de savoir utiliser un smartphone.
 
 \section{Contraintes principaux de développements}
-L'application a été développé pour les deux plateformes mobiles Android et iOS et selon le paradigme orienté objet. Pour ce faire j'ai utilisé le langage de programmation Java\footnote{Java est un langage de programmation objet créé par Sun microsystems et détenu depuis 2009 par Oracle. }, l'environnement de  développement d'application Android et l'IDE Android Studio pour l'application Android et le les langages Swift\footnote{Swift est un langage de programmation objet, multiparadigme, open-source développé par Apple en 2014 } et Objective C\footnote{Objective C est un langage orienté objet réflexif créé en 1983 et détenu par Apple.} avec l'environnement de développement d'application Cocoa Touch et l'IDE XCode pour l'application iOS. 
+L'application a été développé pour les deux plateformes mobiles \gls{Android} et \gls{iOS} et selon le paradigme orienté objet. Pour ce faire j'ai utilisé le langage de programmation \gls{Java}, l'environnement de  développement d'application \gls{Android} et l'\gls{IDE} Android Studio pour l'application Android et le les langages \gls{Swift} et \gls{Objective C} avec l'environnement de développement d'application \gls{Cocoa} Touch et l'\gls{IDE} XCode pour l'application \gls{iOS}. 
 
-J'ai aussi utilisé des standards RFC pour des questions réseaux.
+J'ai aussi utilisé des standards \gls{RFC} pour des questions réseaux.
 
 \section{Besoins fonctionnels}
 Il s'agit ici de décrire les besoins fonctionnels du système à travers les cas d'utilisation de l'application.
@@ -122,37 +122,37 @@ Dans la suite est présenté le diagramme d'activité représentant comment est 
 	\caption{Diagramme d'activité du module de communication}
 	\label{fig.7}
 \end{figure}
-Comme décrit sur la figure \ref{fig.7}, la communication est réalisée via  le protocole HTTP. Ainsi une fois la session démarrée, le fonctionnement du système est lié à la bonne réception des données de la part du service de l'application et du serveur. Si le code de statut HTTP est 200, la communication est effective mais s'il est 400 le service réinitie la communication jusqu'à trois fois. Si après trois tentatives le service ne reçoit toujours pas un code 200, la communication est interrompu au niveau du programme et l'\ut est redirigé vers la page d'authentification.
+Comme décrit sur la figure \ref{fig.7}, la communication est réalisée via  le protocole \gls{HTTP}. Ainsi une fois la session démarrée, le fonctionnement du système est lié à la bonne réception des données de la part du service de l'application et du serveur. Si le code de statut \gls{HTTP} est 200, la communication est effective mais s'il est 400 le service réinitie la communication jusqu'à trois fois. Si après trois tentatives le service ne reçoit toujours pas un code 200, la communication est interrompu au niveau du programme et l'\ut est redirigé vers la page d'authentification.
 
 \section{Spécification des interfaces externes}
 \subsection{Interface Matériel/logiciel}
 \subsubsection*{Configuration minimale sur laquelle le système peut s'exécuter}
 Pour faire fonctionner l'application sur un appareil mobile, l'appareil devra avoir les configurations minimales suivantes :
 \begin{itemize}
-	\item Matériel : Tous les smartphones android ou iOS supportant les configurations minimales au niveau logiciel.
-	\item Logiciel : Tous les smartphones android supportant au moins la version 5.0 (Android Lollipop) ou les smartphones iOS supportant au moins la version 12.0 d'iOS.
+	\item Matériel : Tous les smartphones \gls{Android} ou \gls{iOS} supportant les configurations minimales au niveau logiciel.
+	\item Logiciel : Tous les smartphones android supportant au moins la version 5.0 (Android Lollipop) ou les smartphones \gls{iOS} supportant au moins la version 12.0 d'\gls{iOS}.
 \end{itemize}
 
 \subsubsection*{Protocole d'échange}
-Pour le fonctionnement du système les protocoles utilisés sont le HTTP et un protocole développé par l'entreprise.
+Pour le fonctionnement du système les protocoles utilisés sont le \gls{HTTP} et un protocole développé par l'entreprise.
 
 \subsection{Interface logiciel/logiciel}
 Pour développer l'application, les outils suivants ont été utilisés:
 \begin{itemize}
 	\item lanagages et bibliothèques de développement 
 	\begin{itemize}
-		\item[-] Java 1.8
-		\item[-] Swift 5.1
-		\item[-] Objective C 2.0
-		\item[-] Gradle 5.4.1
-		\item[-] Android API 29
-		\item[-] Cocoa Touch Framework 
+		\item[-] \gls{Java} 1.8
+		\item[-] \gls{Swift} 5.1
+		\item[-] \gls{Objective C} 2.0
+		\item[-] \gls{Gradle} 5.4.1
+		\item[-] \gls{Android} API 29
+		\item[-] \gls{Cocoa} Touch Framework 
 	\end{itemize}
 	\item Outils de développement
 	\begin{itemize}
 		\item[-] Android Studio 3.5
 		\item[-] XCode 10.0
-		\item[-] Git 2.2
+		\item[-] \gls{Git} 2.2
 		\item[-] GitLab
 		\item[-] Mac Mini 2019 et MacOS Mojave
 		\item[-] Samsung Tab 4
@@ -165,14 +165,14 @@ Pour développer l'application, les outils suivants ont été utilisés:
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{assets/images/ihm.png}
-	\caption{Structure IHM de l'application}
+	\caption{Structure \gls{IHM} de l'application}
 	\label{fig.8}
 \end{figure}
 \section{Déroulement du stage}
 \subsection{Développement et difficultés rencontrés}
 Le développement de l'application Smart Home Viewer a été commencé en 2016 par un ancien stagiaire mais il n'a pas pu le terminé avant son départ. Lorsque j'ai repris le code, j'ai dû lire l'intégralité de son code et le compilé pour savoir exactement ce que je dois améliorer ou ajouter. Le code compilait mais l'application ne fonctionnait pas. J'ai d'abord refactoré le code, changé d'architecture et ajouté des fonctionnalités pour qu'elle fonctionne. Je dois dire que malgré le fait que l'application ne fonctionnait pas l'ancien stagiaire m'avait mâché le travail.
 
-J'ai d'abord pris en main l'application android et après l'avoir fait fonctionné totalement, j'ai réimplémenté les mêmes choses sur la version iOS.
+J'ai d'abord pris en main l'application \gls{Android} et après l'avoir fait fonctionné totalement, j'ai réimplémenté les mêmes choses sur la version \gls{iOS}.
 
 Les premières difficultés sont apparus lors des premiers tests. En effet il arrivait que des fois la communication entre les appareils s'interrompaient inopinément ou encore après quelques minutes d'inactivité, la session se terminait tout seul.
 
@@ -181,3 +181,13 @@ Pour résoudre ces problèmes, j'ai mis en place un mécanisme basé sur le patt
 Pour résoudre le problème qui survient à cause de l'inactivité, nous avons mis en place un protocole semblable a du ping pong pour garder la session active.
 
 Le diagramme du modèle observateur que j'ai implémenté est disponible dans l'annexe.
+
+\subsection{Planning daté du travail}
+Le diagramme de Gantt de la figure \ref{shv_gt} présente ma charge de travail sur le développement de l'application Smart Home Viewer.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{assets/images/Gantt_shv.png}
+	\caption{Diagramme de Gantt du projet Smart Home Viewer}
+	\label{shv_gt}
+\end{figure}

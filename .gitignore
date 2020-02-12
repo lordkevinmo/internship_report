@@ -34,3 +34,10 @@
 ########################
 
 .fuse_hidden*
+
+
+#######################
+### Non important files
+######################
+code/
+assets/figures/
