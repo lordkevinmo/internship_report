@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: ieeetr-fr.bst
+Database file #1: contents/biblio.bib
+Warning--can't use both author and editor fields in clean_code
+Warning--empty publisher in clean_code
+You've used 5 entries,
+            1961 wiz_defined-function locations,
+            537 strings with 4625 characters,
+and the built_in function-call counts, 746 in all, are:
+= -- 70
+> -- 23
+< -- 0
++ -- 11
+- -- 6
+* -- 39
+:= -- 115
+add.period$ -- 10
+call.type$ -- 5
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 25
+empty$ -- 92
+format.name$ -- 6
+if$ -- 185
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 2
+newline$ -- 25
+num.names$ -- 5
+pop$ -- 30
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 0
+swap$ -- 2
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 5
+width$ -- 6
+write$ -- 52
+(There were 2 warnings)
