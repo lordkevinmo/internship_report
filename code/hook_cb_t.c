@@ -1,1 +1,0 @@
-typedef ssize_t idaapi hook_cb_t(void *user_data, int notification_code, va_list va);
